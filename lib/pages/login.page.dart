@@ -85,7 +85,9 @@ class LoginPage extends StatelessWidget {
                             fontSize: 16,
                           ),
                         ),
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
                       SizedBox(
                         height: 10,
@@ -127,19 +129,11 @@ class LoginPage extends StatelessWidget {
                         ),
                         height: 60,
                         child: FlatButton(
-                          child: Text(
-                            "Sign In",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          onPressed: () => {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => HomePage(),
-                                  ),
-                                ),
-                              },
-                        ),
+                            child: Text(
+                              "Sign In",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onPressed: () => {}),
                       ),
                     ],
                   ),

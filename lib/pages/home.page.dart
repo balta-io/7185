@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping/pages/product.page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -7,7 +8,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.white.withOpacity(0),
-        leading: Text(""),        
+        leading: Text(""),
       ),
       backgroundColor: Colors.white,
       body: Padding(
@@ -57,7 +58,7 @@ class HomePage extends StatelessWidget {
             ),
             Container(
               height: 350,
-              child: productList(),
+              child: productList(context),
             ),
           ],
         ),
@@ -143,30 +144,50 @@ Widget categoryMenuItem(String image) {
   );
 }
 
-Widget productList() {
+Widget productList(context) {
   return ListView(
     scrollDirection: Axis.horizontal,
     children: <Widget>[
-      productItem(
-          "BeoPlay Speaker", "Bang and Olufsen", "assets/product-1.png", "755"),
-      productItem(
-          "Leather Wristwatch", "Tag Heuer", "assets/product-2.png", "450"),
-      productItem("Smart Bluetooth Speaker", "Google Inc.",
+      productItem(context, "Nike Dry-Fit Long Sleeve", "Nike",
+          "assets/product-10.png", "150"),
+      productItem(context, "BeoPlay Speaker", "Bang and Olufsen",
+          "assets/product-1.png", "755"),
+      productItem(context, "Leather Wristwatch", "Tag Heuer",
+          "assets/product-2.png", "450"),
+      productItem(context, "Smart Bluetooth Speaker", "Google Inc.",
           "assets/product-3.png", "900"),
-      productItem(
-          "Smart Luggage", "Smart Inc.", "assets/product-4.png", "1000"),
+      productItem(context, "Smart Luggage", "Smart Inc.",
+          "assets/product-4.png", "1000"),
     ],
   );
 }
 
-Widget productItem(String title, String desc, String image, String price) {
+Widget productItem(
+    context, String title, String desc, String image, String price) {
   return Container(
     width: 170,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Center(
-          child: Image.asset(image),
+        GestureDetector(
+          onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductPage(),
+                  ),
+                ),
+              },
+          child: Center(
+            child: Hero(
+              child: Image.asset(
+                image,
+                width: 170,
+                height: 220,
+              ),
+              tag: image,
+            ),
+          ),
         ),
         SizedBox(
           height: 5,
