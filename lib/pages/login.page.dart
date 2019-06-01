@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping/pages/home.page.dart';
 import 'package:shopping/pages/signup.page.dart';
+import 'package:shopping/widgets/text/h1.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -8,7 +9,12 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.only(top: 120, left: 20, right: 20, bottom: 40),
+          padding: EdgeInsets.only(
+            top: 120,
+            left: 20,
+            right: 20,
+            bottom: 40,
+          ),
           child: Column(
             children: <Widget>[
               Container(
@@ -33,23 +39,12 @@ class LoginPage extends StatelessWidget {
                         children: <Widget>[
                           Column(
                             children: <Widget>[
-                              Text(
-                                "Welcome,",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 28,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                textAlign: TextAlign.left,
+                              H1(
+                                text: "Welcome,",
                               ),
                               Text(
                                 "Sign In to continue",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                                textAlign: TextAlign.left,
+                                style: Theme.of(context).textTheme.headline,
                               ),
                             ],
                           ),
@@ -57,17 +52,17 @@ class LoginPage extends StatelessWidget {
                             child: Text(
                               "Sign Up",
                               style: TextStyle(
-                                color: Theme.of(context).primaryColor,
+                                color: Theme.of(context).buttonColor,
                               ),
                             ),
-                            onPressed: () => {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => SignupPage(),
-                                    ),
-                                  ),
-                                },
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignupPage(),
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),

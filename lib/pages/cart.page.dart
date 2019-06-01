@@ -4,14 +4,13 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-      ),
       backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
+          SizedBox(
+            height: 30,
+          ),
           Expanded(
             child: Container(
               child: productList(context),
@@ -74,7 +73,8 @@ Widget productList(context) {
     children: <Widget>[
       productItem(context, "BeoPlay Speaker", "755", "assets/product-1.png"),
       productItem(context, "Leather Wristwatch", "450", "assets/product-2.png"),
-      productItem(context, "Smart Bluetooth Speaker", "900", "assets/product-3.png"),
+      productItem(
+          context, "Smart Bluetooth Speaker", "900", "assets/product-3.png"),
       productItem(context, "Smart Luggage", "100", "assets/product-4.png"),
       productItem(context, "Smartphone Case", "99", "assets/product-5.png"),
       productItem(context, "Speakers Stand", "49", "assets/product-6.png"),

@@ -15,8 +15,11 @@ ThemeData buildTheme() {
       ),
     ),
     buttonColor: Color(0xFF00C569),
-    // buttonTheme: ,
+    buttonTheme: ButtonThemeData(
+      height: 25,
+      buttonColor: Colors.deepPurple,
+    ),
     scaffoldBackgroundColor: backgroundColor,
-    cardColor: Colors.white,    
+    cardColor: Colors.white,
   );
 }
