@@ -15,7 +15,7 @@ class TabsPage extends StatelessWidget {
           LoginPage(),
         ],
       ),
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       bottomNavigationBar: new TabBar(
         tabs: [
           Tab(
@@ -28,11 +28,11 @@ class TabsPage extends StatelessWidget {
             icon: new Icon(Icons.perm_identity),
           ),
         ],
-        labelColor: Colors.black,
+        labelColor: Theme.of(context).primaryColor,
         unselectedLabelColor: Colors.black38,
         indicatorSize: TabBarIndicatorSize.label,
         indicatorPadding: EdgeInsets.all(5.0),
-        indicatorColor: Colors.black,
+        indicatorColor: Theme.of(context).primaryColor,
       ),
     );
   }

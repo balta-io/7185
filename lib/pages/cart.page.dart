@@ -4,7 +4,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -17,7 +17,7 @@ class CartPage extends StatelessWidget {
             ),
           ),
           Container(
-            color: Colors.white,
+            color: Colors.black12,
             height: 80,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,7 +27,10 @@ class CartPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text("TOTAL"),
+                      Text(
+                        "TOTAL",
+                        style: Theme.of(context).textTheme.body1,
+                      ),
                       SizedBox(
                         height: 5,
                       ),
@@ -120,7 +123,7 @@ Widget productItem(context, String title, String price, String image) {
                 height: 30,
                 width: 120,
                 decoration: BoxDecoration(
-                  color: Color(0xFFF0F0F0),
+                  color: Colors.black12,
                   borderRadius: BorderRadius.all(
                     Radius.circular(5),
                   ),

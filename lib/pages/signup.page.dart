@@ -19,7 +19,7 @@ class SignupPage extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(15),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).accentColor,
                   boxShadow: [
                     new BoxShadow(
                       color: Colors.black12,
@@ -39,11 +39,7 @@ class SignupPage extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         "Sign Up",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.display1,
                       ),
                     ),
                     SizedBox(
@@ -55,7 +51,7 @@ class SignupPage extends StatelessWidget {
                       decoration: InputDecoration(
                         labelText: "Name",
                         labelStyle: TextStyle(
-                          color: Colors.black38,
+                          color: Theme.of(context).primaryColor,
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
                         ),
@@ -71,7 +67,7 @@ class SignupPage extends StatelessWidget {
                       decoration: InputDecoration(
                         labelText: "Email",
                         labelStyle: TextStyle(
-                          color: Colors.black38,
+                          color: Theme.of(context).primaryColor,
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
                         ),
@@ -88,7 +84,7 @@ class SignupPage extends StatelessWidget {
                       decoration: InputDecoration(
                         labelText: "Password",
                         labelStyle: TextStyle(
-                          color: Colors.black38,
+                          color: Theme.of(context).primaryColor,
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
                         ),
