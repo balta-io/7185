@@ -1,6 +1,31 @@
 import 'package:flutter/material.dart';
 
-class SignupPage extends StatelessWidget {
+class SignupPage extends StatefulWidget {
+  @override
+  _SignupPageState createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage>
+    with SingleTickerProviderStateMixin {
+  AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = new AnimationController(
+      vsync: this,
+      duration: Duration(
+        seconds: 2,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,22 +119,9 @@ class SignupPage extends StatelessWidget {
                     SizedBox(
                       height: 40,
                     ),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5),
-                        ),
-                      ),
-                      height: 60,
-                      child: FlatButton(
-                        child: Text(
-                          "Signup",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        onPressed: () => {},
-                      ),
+                    SubmitButton(
+                      controller: _animationController,
+                      context: context,
                     ),
                   ],
                 ),
@@ -118,6 +130,87 @@ class SignupPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class SubmitButton extends StatelessWidget {
+  final AnimationController controller;
+  final Animation<double> sizeAnim;
+  final Animation<double> borderAnim;
+  final Animation<double> opacityAnim;
+
+  SubmitButton({this.controller, context})
+      : sizeAnim = Tween(
+          begin: MediaQuery.of(context).size.width,
+          end: 90.0,
+        ).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(0.0, 0.1),
+          ),
+        ),
+        borderAnim = Tween(
+          begin: 5.0,
+          end: 90.0,
+        ).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(0.1, 0.4),
+          ),
+        ),
+        opacityAnim = Tween(
+          begin: 1.0,
+          end: 0.0,
+        ).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(0.0, 0.1),
+          ),
+        );
+
+  Widget _animate(context, child) {
+    return Container(
+      width: sizeAnim.value,
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        borderRadius: BorderRadius.all(
+          Radius.circular(borderAnim.value),
+        ),
+      ),
+      height: 90,
+      child: FlatButton(
+        child: opacityAnim.value == 0
+            ? CircularProgressIndicator()
+            : Text(
+                "Signup Now",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white.withOpacity(opacityAnim.value),
+                ),
+              ),
+        onPressed: () {
+          controller.forward();
+          Future.delayed(const Duration(milliseconds: 1800), () {
+            controller.reverse().whenCompleteOrCancel(() {
+              Navigator.pop(context);
+            });
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Welcome to our shop'),
+              ),
+            );
+          });
+        },
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      builder: _animate,
+      animation: controller,
     );
   }
 }
