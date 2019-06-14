@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Shopping Cart',
       debugShowCheckedModeBanner: false,
-      theme: darkTheme(),
+      theme: lightTheme(),
       home: DefaultTabController(
         length: 3,
         child: TabsPage(),
